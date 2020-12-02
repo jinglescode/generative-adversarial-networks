@@ -1,6 +1,6 @@
 # Intuition Behind GANs
 
-Generative adversarial networks (GANs) are powerful models that learn to produce realistic objects that are difficult to distinguish from existing real ones, such as images and audio (speech/music). In this tutorial, we will look at the basic structure of GANs to gain some intuition about how GANs models work. We will look at the [original paper](https://proceedings.neurips.cc/paper/2014/hash/5ca3e9b122f61f8f06494c97b1afccf3-Abstract.html) introducing GANs by Ian Goodfellow et al.
+Generative adversarial networks (GANs) are powerful models that learn to produce realistic objects that are difficult to distinguish from existing real ones, such as images and audio (speech/music). In this tutorial, we will look at the basic structure of GANs to gain some intuition about how GANs models work. We will look at the [original paper](https://github.com/jinglescode/generative-adversarial-networks/blob/main/tutorials/01%20Intuition%20Behind%20GANs/Generative%20Adversarial%20Networks.pdf) introducing GANs by Ian Goodfellow et al.
 
 A GAN model has two main parts, a **generator**, and a **discriminator**; these are two separate neural networks. The generator learns to generate fakes that look real to fool the discriminator. And the discriminator learns to distinguish between what's real and what's fake. So you can think of the generator as a counterfeiter and the discriminator as a police officer. So the *generator* forges counterfeit bills to try to look as realistic as possible, and it does this in the hopes of fooling the *discriminator*. While the *discriminator* learns and gets better at identifying real and fake bills.
 
@@ -28,7 +28,7 @@ In the beginning, the generator will not generate something realistic; it learns
 
 ## Working together (or compete)
 
-Over time, the generator and the discriminator compete against each other, which is why they're called adversarial, in the name "generative adversarial networks". Both networks are bad at their tasks at the start, but during training, they compete against each other and learn from each other until they reach a point where we do not need the discriminator anymore. We can then use the generator; given any class (`Y`) and any random noise, it can produce a realistic image. 
+Both networks are bad at their tasks at the start, but during training, they compete against each other and learn from each other until they reach a point where we do not need the discriminator anymore. We can then use the generator; given any class (`Y`) and any random noise, it can produce a realistic image. 
 
 Now we have a police officer, the discriminator (`D`) who is looking for fake money, and a counterfeiter, the generator (`G`), who is printing counterfeit money. Let's make them learn from each other.
 
@@ -50,6 +50,12 @@ As the discriminator has got better and classifies that the bill is fake, we fee
 
 This one looks a little bit more real because it now contains a face; the fake bills are being accepted as valid again! Once again, the discriminator has to look at the real samples and extract features to detect counterfeit samples. This goes on back-and-forth between the generator and the discriminator during the training process until both networks are experts. Eventually, the generator can produce near-perfect counterfeits, and the discriminator develops a keener eye able to perceive for the slightest mistakes.
 
+So, at each iteration of the training process, the generative network's weights are updated to increase the classification error. In contrast, the weights of the discriminative network are updated so that to decrease this error.
+
+These opposite goals and the implied notion of adversarial training of the two networks, which is why they're called "adversarial networks", in the name "generative adversarial networks". Over time, the generator and the discriminator compete against each other, both becoming better and better. The competition between them makes these two networks progress for their respective goals. 
+
 ## In summary
 
-Generative models learn to produce realistic samples, like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of dogs with different variations. While discriminative models distinguish between different classes by looking at both real samples and fake ones created by the generator and tries to tell which ones are real and which ones are fake.
+The goal of generative models is to learn to produce realistic samples to fool the discriminator, so the generative neural network is trained to maximise the final classification error. Like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of dogs with different variations, that the discriminator could not tell real from the generated data.
+
+The goal of discriminative models is to detect fake generated data, so the discriminative neural network is trained to minimise the final classification error. It learns to distinguish between the different classes by looking at both real samples and fake ones created by the generator and tries to tell which ones are real and which ones are fake.
