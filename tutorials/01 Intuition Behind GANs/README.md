@@ -1,6 +1,6 @@
 # Intuition Behind GANs
 
-Generative adversarial networks (GANs) are powerful models that learn to produce realistic objects that are difficult to distinguish from existing real ones, such as images and audio (speech/music). In this tutorial, we will look at the basic structure of GANs to gain some intuition about how GANs models work. We will look at the [original paper](https://github.com/jinglescode/generative-adversarial-networks/blob/main/tutorials/01%20Intuition%20Behind%20GANs/Generative%20Adversarial%20Networks.pdf) introducing GANs by Ian Goodfellow et al.
+Generative adversarial networks (GANs) are powerful models that learn to produce realistic objects that are difficult to distinguish from existing real ones, such as images and audio (speech/music). In this tutorial, we will look at the basic structure of GANs to gain some intuition about how GANs models work. We will look at the [original paper](https://github.com/jinglescode/generative-adversarial-networks/blob/main/tutorials/01%20Intuition%20Behind%20GANs/assets/Generative%20Adversarial%20Networks.pdf) introducing GANs by Ian Goodfellow et al.
 
 A GAN model has two main parts, a **generator**, and a **discriminator**; these are two separate neural networks. The generator learns to generate fakes that look real to fool the discriminator. And the discriminator learns to distinguish between what's real and what's fake. So you can think of the generator as a counterfeiter and the discriminator as a police officer. So the *generator* forges counterfeit bills to try to look as realistic as possible, and it does this in the hopes of fooling the *discriminator*. While the *discriminator* learns and gets better at identifying real and fake bills.
 
@@ -13,6 +13,8 @@ As you can see, the discriminative model here is a convolutional neural network 
 ![Discriminator](assets/01.png)
 
 In other words, they try to model the probability of class `Y` given a set of features `X`. It starts off being terrible at distinguishing real and fake money, but it learns and gets better at classifying real and fake during the training process.
+
+We will look at how [discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator) works in the next tutorial.
 
 ## Generator
 
@@ -59,3 +61,5 @@ These opposite goals and the implied notion of adversarial training of the two n
 The goal of generative models is to learn to produce realistic samples to fool the discriminator, so the generative neural network is trained to maximise the final classification error. Like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of dogs with different variations, that the discriminator could not tell real from the generated data.
 
 The goal of discriminative models is to detect fake generated data, so the discriminative neural network is trained to minimise the final classification error. It learns to distinguish between the different classes by looking at both real samples and fake ones created by the generator and tries to tell which ones are real and which ones are fake.
+
+We will look at how [discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator) works in the next tutorial.

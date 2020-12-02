@@ -8,4 +8,4 @@ The basic structure of generative adversarial networks to gain some intuition ab
 
 ### [Discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator)
 
-How the discriminator works. 
+How the discriminator works and its code.
