@@ -18,7 +18,7 @@ We will look at how [discriminator](https://github.com/jinglescode/generative-ad
 
 ## Generator
 
-On the other hand, a generator is a counterfeiter who is learning how to create fake money. Unlike the discriminator that takes in an image and output a value, a generator takes in an input vector and outputs an image. The generator takes in 2 inputs, 1) a class (`Y`), and 2) a noise vector.
+On the other hand, a generator is a counterfeiter who is learning how to create fake money. Unlike the discriminator that takes in an image and output a value, a generator receives input features and outputs an image. There are two input features that we fed into the generator, 1) a class (`Y`), and 2) a noise vector.
 
 ![Generator](assets/02.png)
 
@@ -27,6 +27,8 @@ On the other hand, a generator is a counterfeiter who is learning how to create 
 **Noise**. Sometimes, we need the model to generate diverse representations of a class. For example, we aim to create a variety of realistic dogs; the noise ensures that what was generated is always something different because consistently generating the same dog is not interesting. This random noise that also goes in as an input can help us create images with various features. Sometimes is a dog standing up or lying down. Sometimes it has pointy ears, and sometimes its tongue is sticking out. With the added noise, these models would generate realistic and diverse representations. 
 
 In the beginning, the generator will not generate something realistic; it learns as it manages to fool the discriminator until we get a good generator and can produce realistic images that we want. Additionally, the generator was not fed with the real images for training, so this is very tough for generators to learn, especially in the beginning.
+
+We will look at how [generator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/03%20Generator) works in this tutorial.
 
 ## Working together (or compete)
 
@@ -58,8 +60,8 @@ These opposite goals and the implied notion of adversarial training of the two n
 
 ## In summary
 
-The goal of generative models is to learn to produce realistic samples to fool the discriminator, so the generative neural network is trained to maximise the final classification error. Like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of dogs with different variations, that the discriminator could not tell real from the generated data.
+The goal of generative models is to learn to produce realistic samples to fool the discriminator, so the generative neural network is trained to maximize the final classification error. Like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of dogs with different variations, that the discriminator could not tell real from the generated data.
 
-The goal of discriminative models is to detect fake generated data, so the discriminative neural network is trained to minimise the final classification error. It learns to distinguish between the different classes by looking at both real samples and fake ones created by the generator and tries to tell which ones are real and which ones are fake.
+The goal of discriminative models is to detect fake generated data, so the discriminative neural network is trained to minimize the final classification error. It learns to distinguish between the different classes by looking at both real samples and fake ones created by the generator and tries to tell which ones are real and which ones are fake.
 
 We will look at how [discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator) works in the next tutorial.

@@ -47,7 +47,6 @@ Taken from [Goodfellow, Ian, et al. "Generative Adversarial Networks"](https://g
 We will build the discriminator with four layers. The network takes in image tensor and returns a single value, the probability of this image is real or fake. As the size of MNIST images is 28x28, we will flatten the image, which gives us an input dimension of `784`.
 
 ```python
-
 class Discriminator(nn.Module):
     '''
     Discriminator Class
@@ -65,16 +64,16 @@ class Discriminator(nn.Module):
         dims = [hidden_dim*4, hidden_dim*2, hidden_dim]
 
         self.layers = nn.Sequential(
-            self.get_discriminator_block(im_dim, dims[0]),
-            self.get_discriminator_block(dims[0], dims[1]),
-            self.get_discriminator_block(dims[1], dims[2]),
+            self.discriminator_block(im_dim, dims[0]),
+            self.discriminator_block(dims[0], dims[1]),
+            self.discriminator_block(dims[1], dims[2]),
             nn.Linear(dims[2], out_dim)
         )
 
     def forward(self, x):
         return self.layers(x)
     
-    def get_discriminator_block(self, input_dim, output_dim):
+    def discriminator_block(self, input_dim, output_dim):
         '''
         A discriminator neural network layer, with a linear transformation 
         followed by an nn.LeakyReLU activation with negative slope of 0.2 
@@ -83,5 +82,4 @@ class Discriminator(nn.Module):
           nn.Linear(input_dim, output_dim),
           nn.LeakyReLU(negative_slope=0.2)
       )
-
 ```
