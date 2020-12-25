@@ -32,10 +32,6 @@ With the discriminator's predictions, we can compute a cost function (`g_loss`) 
 
 When we have trained a generator that can fool the discriminator and fool humans to think it is real, we can save the generator neural network. We can feed noise input vectors to this generator, and it will generate realistic samples. With different noise vectors, it can generate a diverse range of samples. Thus, we can generate [these cats that do not exist](https://thesecatsdonotexist.com/).
 
-## In summary
-
-The goal of generative models is to learn to produce realistic samples to fool the discriminator, so the generative neural network is trained to maximize the final classification error. Like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of cats with different variations, that the discriminator could not tell real from the generated data.
-
 ## PyTorch Code
 
 The generator network takes in a noise vector, apply non-linear transformations through 4 `linear+batchnorm+relu` blocks. Then output a tensor of size `784` to match the output size of a flattened MNIST image, `28x28`.
@@ -45,25 +41,25 @@ class Generator(nn.Module):
     '''
     Generator Class
     Parameters:
-        z_dim: int, default: 10
+        dim_noise: int, default: 10
           the dimension of the noise vector
-        im_dim: int, default: 784
+        in_dim: int, default: 784
           the dimension of the images, fitted for the dataset used
           (MNIST images are 28x28, so 784 so is the default)
         hidden_dim: int, default: 128
           the inner dimension size
     '''
-    def __init__(self, z_dim=10, im_dim=784, hidden_dim=128):
+    def __init__(self, dim_noise=10, in_dim=784, hidden_dim=128):
         super(Generator, self).__init__()
 
         dims = [hidden_dim, hidden_dim*2, hidden_dim*4, hidden_dim*8]
 
         self.gen = nn.Sequential(
-            self.generator_block(z_dim, dims[0]),
+            self.generator_block(dim_noise, dims[0]),
             self.generator_block(dims[0], dims[1]),
             self.generator_block(dims[1], dims[2]),
             self.generator_block(dims[2], dims[3]),
-            nn.Linear(dims[3], im_dim),
+            nn.Linear(dims[3], in_dim),
             nn.Sigmoid()
         )
 
@@ -80,3 +76,7 @@ class Generator(nn.Module):
             nn.ReLU(inplace=True),
         )
 ```
+
+## In summary
+
+The goal of generative models is to learn to produce realistic samples to fool the discriminator, so the generative neural network is trained to maximize the final classification error. Like an artist that can paint pictures that look like actual paintings or sceneries, or generate pictures of cats with different variations, that the discriminator could not tell real from the generated data.

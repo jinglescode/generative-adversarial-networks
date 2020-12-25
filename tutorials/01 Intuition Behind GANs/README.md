@@ -65,3 +65,5 @@ The goal of generative models is to learn to produce realistic samples to fool t
 The goal of discriminative models is to detect fake generated data, so the discriminative neural network is trained to minimize the final classification error. It learns to distinguish between the different classes by looking at both real samples and fake ones created by the generator and tries to tell which ones are real and which ones are fake.
 
 We will look at how [discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator) works in the next tutorial.
+
+Want to see the entire training process in action, this notebook contains code for training a generative adversarial network that learns to generate hand written digits. [Open notebook on Colab]().
