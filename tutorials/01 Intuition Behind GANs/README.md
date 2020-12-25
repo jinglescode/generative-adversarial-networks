@@ -66,4 +66,4 @@ The goal of discriminative models is to detect fake generated data, so the discr
 
 We will look at how [discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator) works in the next tutorial.
 
-Want to see the entire training process in action, this notebook contains code for training a generative adversarial network that learns to generate hand written digits. [Open notebook on Colab]().
+Want to see the entire training process in action, this notebook contains code for training a generative adversarial network that learns to generate hand written digits. [Open notebook on Colab](https://colab.research.google.com/github/jinglescode/generative-adversarial-networks/blob/main/tutorials/04%20Training%20GAN/Train%20Basic%20GAN.ipynb).

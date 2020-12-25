@@ -1,6 +1,6 @@
 # Training GAN
 
-In the previous tutorials, we have seen the 2 components in a generative adversarial network (GAN) – the generator and the discriminator. In this tutorial, we will combine the generator and discriminator and start training the GAN.
+In the previous tutorials, we have seen the 2 components in a generative adversarial network (GAN) – the [generator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/03%20Generator) and the [discriminator](https://github.com/jinglescode/generative-adversarial-networks/tree/main/tutorials/02%20Discriminator). In this tutorial, we will combine the generator and discriminator and start training the GAN.
 
 First, we input a random noise to the generator, and the generator will produce some fake samples. These generated samples, together with real samples from the dataset, are input into the discriminator. The discriminator will try to classify whether if a sample is real or fake. This produces a probability that will be used in the binary cross-entropy loss function to compare against the true label (real or fake), and determine the error rate and backpropagate to update the discriminator's parameters.
 
@@ -105,4 +105,4 @@ The goal of the discriminator is to minimize the loss from misclassification bet
 
 This notebook contains code for training a generative adversarial network that learns to generate hand written digits. 
 
-[Open notebook on Colab]()
+[Open notebook on Colab](https://colab.research.google.com/github/jinglescode/generative-adversarial-networks/blob/main/tutorials/04%20Training%20GAN/Train%20Basic%20GAN.ipynb)
